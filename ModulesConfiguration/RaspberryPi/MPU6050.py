@@ -18,7 +18,6 @@ ACCEL_ZOUT_H = 0x3F
 GYRO_XOUT_H  = 0x43
 GYRO_YOUT_H  = 0x45
 GYRO_ZOUT_H  = 0x47
-x_angleC=0.0
 
 #-------------------------------------------
 # Post-Processed MPU6050 Global Variables
@@ -40,48 +39,9 @@ a = 0
 factor = 1.0
 Mul_acc = 16384.0/factor
 Mul_gyro= 131.0/factor
-tau = 0.075
-y1 = 0.0
-flag = 0
-noise = 0
-x1 = 0
-x2 = 0
 
-
-
-def mpu_check():
-    
-
-    global x
-    global y
-    global z
-    global var_x
-    global var_y
-    global var_z
-    global total_var
-    
-    x[0] = x[1]
-    x[1] = x[2]
-    x[2] = x[3]
-    x[3] = x[4]
-    x[4] = Ax
-    var_x = variance(x)
-
-    y[0] = y[1]
-    y[1] = y[2]
-    y[2] = y[3]
-    y[3] = y[4]
-    y[4] = Ay
-    var_y = variance(y)
-
-    z[0] = z[1]
-    z[1] = z[2]
-    z[2] = z[3]
-    z[3] = z[4]
-    z[4] = Az
-    var_z = variance(z)
-
-    total_var = var_x+var_y+var_z
+SAMPLING_RATE = 60
+SAMPLING_TIME = 1/SAMPLING_RATE
     
     
 def MPU_values():
@@ -162,17 +122,5 @@ MPU_Init()
 #This is a test code. You can change it according to your application.     
 while (1):
     MPU_values()
-    #print("Ax = ",round(A_x,0), "| Ay = ", round(A_y,0), "| Az = ", round(A_z,0))
-    if (A_x >= -20 and A_x <= 20 and A_y >= -20 and A_y <= 20):
-        print("Stop")
-    elif (A_x >= -20 and A_x <= 20 and A_y <= -55):
-        print("Left")
-    elif (A_x >= -20 and A_x <= 20 and A_y >= 55):
-        print("Right")
-    elif (A_y >= -20 and A_y <= 20 and A_x <= -55):
-        print("Forward")
-    elif (A_y >= -20 and A_y <= 20 and A_x >= 55):
-        print("Backward")
-    else:
-        print("Stop")
-    time.sleep(.15)
+    print("Ax = ",round(A_x,0), "| Ay = ", round(A_y,0), "| Az = ", round(A_z,0))
+    time.sleep(SAMPLING_TIME)
