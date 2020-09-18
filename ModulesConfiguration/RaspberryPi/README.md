@@ -8,7 +8,7 @@ Many IoT and Embedded engineers spent a lot of time in configurations of the sen
 ## Files Explanation
 The explanation of files are given below: 
 
-### MP06050.py
+### 1. MP06050.py
 This is Python written library for MPU6050 module to be used with Raspberry Pi. To use this library, make sure that you have installed **smbus** and **Rpi.GPIO** in your Raspberry Pi module:
 
 #### Hardware Pins 
@@ -37,7 +37,7 @@ $ python3 MPU6050.py
 *Yahooo!! We got our output now and we saved the precious 2 days our life. Let's utilize it in completing our projects!*
 
 
-### Ultrasonic.py
+### 2. Ultrasonic.py
 This is Python written library for Ultrasonic sensor module. The distance programming has been done in centimeters. To use this library, make sure that you have installed **Rpi.GPIO** in your Raspberry Pi module:
 
 #### Hardware Pins 
@@ -64,6 +64,14 @@ $ python3 Ultrasonic.py
 
 *Yahooo!! We are getting distance now!!!! Now let's make obstacle avoidance robot*
 
-#### IMPORTANT NOTE!!!!
+### 3. GPIO_Clean.py
+Imagine, you are working on RC car project and after breaking your code, the motors are still running. Why?? 
+It is because you did not clear the GPIO pins. They are still working even after your breaking the code!!!
+How to stop the motors? **GPIO_Clean.py** helps you to make you calm. No hard instructions. Just run this file 
+everytime you feel that I do not want to work on my project more. Let's work on anoter. The instructions are 
+super easy. Please write following command given below to run the GPIO_Clean.py
 
-
+```sh
+$ python3 GPIO_Clean.py
+```
+*Seems like our GPIO pins are now in peace. Hail Peace and Inner Satisfaction!! Pheewww...*
